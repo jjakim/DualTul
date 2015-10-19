@@ -1,0 +1,98 @@
+<head>
+<script type="text/javascript"
+  src="dygraph-combined.js"></script>
+</head>
+<body>
+<html><h1>It works!</h1>
+<p>This is the default web page for this server on the stick.</p>
+<p></p>
+
+<p><b>Show Series:</b></p>
+<p>
+<input type=checkbox id="0" checked onClick="change(this)">
+<label for="0"> South</label><br/>
+<input type=checkbox id="1" checked onClick="change(this)">
+<label for="1"> Bus</label><br/>
+<!--
+// <input type=checkbox id="2" onClick="change(this)">
+// <label for="2"> TempCPU</label><br/>
+-->
+
+
+
+
+
+<div id="graphdiv"></div>
+<script type="text/javascript">
+  g = new Dygraph(
+
+    // containing div
+    document.getElementById("graphdiv"),
+
+    // CSV or path to a CSV file.
+    "data0.csv",
+	
+    // options
+	{
+	Ticker: Dygraph.dateTicker,
+	legend: 'always',
+	title: "Hive weights as of " ,  
+	showRoller: false,
+	rollPeriod: 3,
+	showRangeSelector: true,
+	rangeSelectorHeight: 30,
+	customBars: false,
+	visability: [true, true, true],
+
+
+
+	xValueParser: function(x){return x*1000;},
+	xValueFormatter: Dygraph.dateString_,
+	xTicker: Dygraph.dateTicker,
+	axes: 
+		{
+		x: {
+
+// valueFormatter - just the point value format.
+//		axisLabelFormatter: Dygraph.dateAxisLabelFormatter,
+//		valueFormatter: Dygraph.dateString_,
+//		ValueFormatter: Dygraph.dateValueFormatter,
+
+// valueParser - 
+//		ValueParser: function(x) { return 1000*parseInt(x); },
+
+// label - 
+//		Ticker: Dygraph.dateTicker 
+
+		},
+		y: {
+		label: 'Pounds'
+		},
+	},
+
+// xValueFormatter: Dygraph.datString_,
+//
+//	xValueParser: function (x) {
+//		return 1000 * parseInt(x);
+//	},
+//	xTicker: Dygraph.dateTicker,
+//	labels: ["Date", "South", "Bus"],
+//  ylabel: 'Pounds',
+	}
+  );
+
+setStatus();
+
+
+function setStatus() {
+	document.getElementById("visibility").innerHTML =
+		g.visibility().toString();
+}
+
+
+function change(el) {
+	g.setVisibility(parseInt(el.id), el.checked);
+		setStatus();
+}
+</script>
+</body></html>
