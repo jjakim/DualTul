@@ -6,6 +6,8 @@
 #
 #read and store dual weights as text file
 #
+# v.0.0.2 changed drivepath for single drive implementation
+#
 ####################################
 
 use strict;
@@ -23,10 +25,10 @@ my $cpuTemp;
 
 # read the scales
 
-$weight0 = `sudo /home/pi/hx711/hx711-0 1`;
+$weight0 = `sudo /media/usbstick/www/hx711/hx711-0 1`;
 $weight0 = $weight0/9200;
 
-$weight1 = `sudo /home/pi/hx711/hx711-1 1`;
+$weight1 = `sudo /media/usbstick/www/hx711/hx711-1 1`;
 $weight1 = $weight1/7300;
 
 $cpuTemp = `vcgencmd measure_temp`;
