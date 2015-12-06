@@ -9,6 +9,8 @@ In conversation with the author, he asked if I thought the mix of Bash & Perl wa
 
 ...But that got me thinking, can I make a pure-perl implementation? Thus came HiveTul, same name - different spelling.
 At this point a couple of issues were observed:
+-I wanted data stored in a more transparent format than SQL. Ditching it also reduces overhead.
+-I also wanted to get rid of RRD in favor of some data presentation that had more options.
 -I wanted to monitor more than one hive (reduce the per-hive cost!)
 -The Pi version had moved on to B+ v2, which changed SD card configuration (hardware only).
 ...and the port I had used (P5) was not available on the v2.
